@@ -10,7 +10,7 @@ int main{
   //the remainder will be the carry?
   //the sum will be the not remainder?????
 
-  //read the text input line by line
+  //read the text input line by line. this comes from a file
   // save the first word to a variable and match that first word to an operation
   // save the second word to variable top and truncate the first 2 digits
   // save the third word to variable bot and truncate the first 2 digits
@@ -18,6 +18,11 @@ int main{
       // this is done by converting each digit to a base 10 number and adding them together
   // save the remainder to variable remainder (need to figure this out)
   // add variable remainder to top and to bot. this might just be the regular process or something. needs more work.
-  // 
+  // convert to uint32_t and print out
+  // print 2 captured numbers
+  // print solution
+
+
+  
   return 0;
 };
