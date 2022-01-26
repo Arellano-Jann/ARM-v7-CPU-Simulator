@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstdint>
-#incldue <fstream>
+#include <fstream>
 
 int main{
 
@@ -19,13 +19,14 @@ int main{
 
   std::ifstream file;
   file.open(filename);
-  if (file.is_open()){
+  if (file){
     std::string word;
     while (file >> word){
       
     }
   }
-  
+
+  // create a function to take in 3 string values. add, hex, hex.
   // save the first word to a variable and match that first word to an operation
   // save the second word to variable top and truncate the first 2 digits
   // save the third word to variable bot and truncate the first 2 digits
