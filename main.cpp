@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cstdint>
 #include <fstream>
+#include <string>
 
 int main{
 
@@ -21,8 +22,8 @@ int main{
   file.open(filename);
   if (file){
     std::string word;
-    while (file >> word){
-      
+    while (getline(file, std::string line)){
+      addHex(line);
     }
   }
 
@@ -40,3 +41,22 @@ int main{
   
   return 0;
 };
+
+void addHex(std::string line){
+  std::string function;
+  std::string hex1;
+  std::string hex2;
+  //int i = 0;
+  for (int i = 0 ; i < line.length(); i++){ // does this stop at the space or after the space???
+    if (line[i] == ' '){ break; }
+    function += line[i];
+  }
+  for (int i = function.length(); i < line.length(); i++){
+    if (line[i] == ' '){ break; }
+    
+  }
+  for (int i = function.length(); i < line.length(); i++){
+    if (line[i] == ' '){ break; }
+    
+  }
+}
