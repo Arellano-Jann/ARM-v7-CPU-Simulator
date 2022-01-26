@@ -1,5 +1,7 @@
 #include <iostream>
-
+#include <iomanip>
+#include <cstdint>
+#incldue <fstream>
 
 int main{
 
@@ -11,6 +13,19 @@ int main{
   //the sum will be the not remainder?????
 
   //read the text input line by line. this comes from a file
+  std::string filename;
+  std::cout << "What's the filename? ";
+  std::cin >> filename;
+
+  std::ifstream file;
+  file.open(filename);
+  if (file.is_open()){
+    std::string word;
+    while (file >> word){
+      
+    }
+  }
+  
   // save the first word to a variable and match that first word to an operation
   // save the second word to variable top and truncate the first 2 digits
   // save the third word to variable bot and truncate the first 2 digits
@@ -21,8 +36,6 @@ int main{
   // convert to uint32_t and print out
   // print 2 captured numbers
   // print solution
-
-
   
   return 0;
 };
