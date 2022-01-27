@@ -59,4 +59,22 @@ void addHex(std::string line){
     if (line[i] == ' '){ break; }
     hex2 += line[i];
   }
+  hex1.erase(0, 2);
+  hex2.erase(0, 2);
+
+  convertHexToDecimal(hex1&); // ensure hex1 saves properly
+  convertHexToDecimal(hex2&);
+  return addHexHelper(hex1, hex2);
+}
+
+void addHexHelper(uint32_t hex1, uint32_t hex2){
+  
+}
+
+void printDecimalToHex(uint32_t decimal){
+  std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
+}
+    
+void convertHexToDecimal(std::string hex){
+  
 }
