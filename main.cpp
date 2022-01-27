@@ -68,7 +68,10 @@ void addHex(std::string line){
 }
 
 void addHexHelper(uint32_t hex1, uint32_t hex2){
-  
+  uint32_t hex3;
+  hex3 = hex1 + hex2;
+  //if (hex3 > UINT32_MAX){ hex3 - UINT32_MAX; }
+  printDecimalToHex(hex3);
 }
 
 void printDecimalToHex(uint32_t decimal){
@@ -76,5 +79,5 @@ void printDecimalToHex(uint32_t decimal){
 }
     
 void convertHexToDecimal(std::string hex){
-  
+  //convert to uint32_t
 }
