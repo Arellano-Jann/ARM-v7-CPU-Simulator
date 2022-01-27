@@ -3,8 +3,10 @@
 #include <cstdint>
 #include <fstream>
 #include <string>
+#include <sstream>
+// #include "helperLibrary.h"
 
-int main{
+int main(){
 
   //ignore the 0x
   //add the 2 hexes by using a dictionary formula
@@ -18,12 +20,16 @@ int main{
   std::cout << "What's the filename? ";
   std::cin >> filename;
 
-  std::ifstream file;
-  file.open(filename);
+  std::ifstream file(filename);
+  // file.open(filename);
   if (file){
-    std::string word;
-    while (getline(file, std::string line)){
-      addHex(line);
+    std::string func;
+    uint32_t hex1, hex2;
+    while (file >> func >> hex1 >> hex2){
+      std::cout << "here";
+      uint32_t decimal1 = convertHexToDecimal(hex1);
+      uint32_t decimal2 = convertHexToDecimal(hex2);
+      addDecimal(decimal1, decimal2);
     }
   }
 
@@ -40,44 +46,52 @@ int main{
   // print solution
   
   return 0;
-};
-
-void addHex(std::string line){
-  std::string function;
-  std::string hex1;
-  std::string hex2;
-  //int i = 0;
-  for (int i = 0 ; i < line.length(); i++){ // does this stop at the space or after the space???
-    if (line[i] == ' '){ break; }
-    function += line[i];
-  }
-  for (int i = function.length(); i < line.length(); i++){
-    if (line[i] == ' '){ break; }
-    hex1 += line[i];
-  }
-  for (int i = function.length() + hex1.length(); i < line.length(); i++){
-    if (line[i] == ' '){ break; }
-    hex2 += line[i];
-  }
-  hex1.erase(0, 2);
-  hex2.erase(0, 2);
-
-  convertHexToDecimal(hex1&); // ensure hex1 saves properly
-  convertHexToDecimal(hex2&);
-  return addHexHelper(hex1, hex2);
 }
 
-void addHexHelper(uint32_t hex1, uint32_t hex2){
+// void addHex(std::string line){
+//   std::string function;
+//   std::string hex1;
+//   std::string hex2;
+//   //int i = 0;
+//   for (int i = 0 ; i < line.length(); i++){ // does this stop at the space or after the space???
+//     if (line[i] == ' '){ break; }
+//     function += line[i];
+//   }
+//   for (int i = function.length(); i < line.length(); i++){
+//     if (line[i] == ' '){ break; }
+//     hex1 += line[i];
+//   }
+//   for (int i = function.length() + hex1.length(); i < line.length(); i++){
+//     if (line[i] == ' '){ break; }
+//     hex2 += line[i];
+//   }
+//   hex1.erase(0, 2);
+//   hex2.erase(0, 2);
+
+//   uint32_t decimal1 = convertHexToDecimal(hex1); // ensure hex1 saves properly
+//   uint32_t decimal2 = convertHexToDecimal(hex2);
+//   return addHexHelper(decimal1, decimal2);
+// }
+    
+uint32_t convertHexToDecimal(uint32_t hex){ // maybe put a &
+  // hex = std::stoul(hex, nullptr, 16);
+  // unsigned long hex1;
+  // hex1 = std::stoul(hex,nullptr,16);
+  // uint32_t decimal = hex1;
+  // return decimal;
+  std::stringstream ss;
+  ss << std::hex << hex;
+  ss >> hex;
+  return hex;
+}
+
+void addDecimal(uint32_t decimal1, uint32_t decimal2){
   uint32_t hex3;
-  hex3 = hex1 + hex2;
+  hex3 = decimal1 + decimal2;
   //if (hex3 > UINT32_MAX){ hex3 - UINT32_MAX; }
   printDecimalToHex(hex3);
 }
 
 void printDecimalToHex(uint32_t decimal){
   std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
-}
-    
-void convertHexToDecimal(std::string hex){
-  //convert to uint32_t
 }
