@@ -19,14 +19,14 @@ uint32_t convertHexToDecimal(uint32_t hex){ // maybe put a &
 }
 
 void printDecimalToHex(uint32_t decimal){
-  	std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
+  	// std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
+	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << decimal;
 }
 
 void addDecimal(uint32_t decimal1, uint32_t decimal2){
 	uint32_t hex3;
 	hex3 = decimal1 + decimal2;
-	//if (hex3 > UINT32_MAX){ hex3 - UINT32_MAX; }
-	printDecimalToHex(hex3);
+	printDecimalToHex(hex3); // possibly refactor this?
 }
 
 int main(){
@@ -44,22 +44,24 @@ int main(){
 	std::cin >> filename;
 
 	std::ifstream file(filename);
-  
-	std::cout << "1";
-	file.open(filename);
-	std::cout << "2";
 
-	// if (file.is_open()){
-    std::string func;
-    uint32_t hex1, hex2;
-	std::cout << "3";
-    while (file >> func >> hex1 >> hex2){
-		std::cout << "4";
-      	uint32_t decimal1 = convertHexToDecimal(hex1);
-      	uint32_t decimal2 = convertHexToDecimal(hex2);
-      	addDecimal(decimal1, decimal2);
-    // }
-  }
+	if (file.is_open()){
+		std::string func;
+		uint32_t hex1, hex2; // find a way to convert string to uint or file to uint
+		while (file >> func >> hex1 >> hex2){
+			uint32_t decimal1 = convertHexToDecimal(hex1);
+			uint32_t decimal2 = convertHexToDecimal(hex2);
+			addDecimal(decimal1, decimal2);
+    	}
+ 	}
+  	// std::cout << "6";
+  	file.close();
+
+	// uint32_t hex1 = 0xFFFFFFFF;
+	// uint32_t hex2 = 2;
+  	// uint32_t decimal1 = convertHexToDecimal(hex1);
+    // uint32_t decimal2 = convertHexToDecimal(hex2);
+    // addDecimal(decimal1, decimal2);
 
   // create a function to take in 3 string values. add, hex, hex.
   // save the first word to a variable and match that first word to an operation
