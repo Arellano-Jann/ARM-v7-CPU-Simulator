@@ -1,5 +1,17 @@
 # Assembly-Hex-Calc
 
+# Build Instructions
+To build the program:
+1. Open the terminal
+2. Type `make`
+3. Type `./main`
+4. Type `file.txt` into the prompt. This can be any other filename too.
+5. ???
+6. Profit.
+
+____
+# Assignment Instructions
+
 You are tasked with designing a machine language simulator. 
 This project must be written in C or C++.
 If you elect to use C++ be careful with your objects. Your code should be versatile enough to be modified for future assignments with more than one operation. 
