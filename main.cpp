@@ -20,7 +20,7 @@ uint32_t convertHexToDecimal(uint32_t hex){ // maybe put a &
 
 void printDecimalToHex(uint32_t decimal){
   	// std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
-	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << decimal;
+	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << decimal << std::endl;
 }
 
 void addDecimal(uint32_t decimal1, uint32_t decimal2){
@@ -48,7 +48,7 @@ int main(){
 	if (file.is_open()){
 		std::string func;
 		uint32_t hex1, hex2; // find a way to convert string to uint or file to uint
-		while (file >> func >> hex1 >> hex2){
+		while (file >> func >> std::hex >> hex1 >> hex2){
 			uint32_t decimal1 = convertHexToDecimal(hex1);
 			uint32_t decimal2 = convertHexToDecimal(hex2);
 			addDecimal(decimal1, decimal2);
