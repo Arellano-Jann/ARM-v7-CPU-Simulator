@@ -53,10 +53,10 @@ void addHex(std::string line){
   }
   for (int i = function.length(); i < line.length(); i++){
     if (line[i] == ' '){ break; }
-    
+    hex1 += line[i];
   }
-  for (int i = function.length(); i < line.length(); i++){
+  for (int i = function.length() + hex1.length(); i < line.length(); i++){
     if (line[i] == ' '){ break; }
-    
+    hex2 += line[i];
   }
 }
