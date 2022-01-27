@@ -6,30 +6,57 @@
 #include <sstream>
 // #include "helperLibrary.h"
 
+uint32_t convertHexToDecimal(uint32_t hex){ // maybe put a &
+	// hex = std::stoul(hex, nullptr, 16);
+	// unsigned long hex1;
+	// hex1 = std::stoul(hex,nullptr,16);
+	// uint32_t decimal = hex1;
+	// return decimal;
+	std::stringstream ss;
+	ss << std::hex << hex;
+	ss >> hex;
+	return hex;
+}
+
+void printDecimalToHex(uint32_t decimal){
+  	std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
+}
+
+void addDecimal(uint32_t decimal1, uint32_t decimal2){
+	uint32_t hex3;
+	hex3 = decimal1 + decimal2;
+	//if (hex3 > UINT32_MAX){ hex3 - UINT32_MAX; }
+	printDecimalToHex(hex3);
+}
+
 int main(){
 
-  //ignore the 0x
-  //add the 2 hexes by using a dictionary formula
-  //each digit corresponds to a number
-  //make sure to remember that there's a carry and a sum
-  //the remainder will be the carry?
-  //the sum will be the not remainder?????
+//ignore the 0x
+//add the 2 hexes by using a dictionary formula
+//each digit corresponds to a number
+//make sure to remember that there's a carry and a sum
+//the remainder will be the carry?
+//the sum will be the not remainder?????
 
-  //read the text input line by line. this comes from a file
-  std::string filename;
-  std::cout << "What's the filename? ";
-  std::cin >> filename;
+//read the text input line by line. this comes from a file
+	std::string filename;
+	std::cout << "What's the filename? ";
+	std::cin >> filename;
 
-  std::ifstream file(filename);
-  // file.open(filename);
-  if (file){
+	std::ifstream file(filename);
+  
+	std::cout << "here";
+	file.open(filename);
+	std::cout << "here";
+
+	if (file.is_open()){
     std::string func;
     uint32_t hex1, hex2;
     while (file >> func >> hex1 >> hex2){
-      std::cout << "here";
-      uint32_t decimal1 = convertHexToDecimal(hex1);
-      uint32_t decimal2 = convertHexToDecimal(hex2);
-      addDecimal(decimal1, decimal2);
+		std::cout << "here";
+      	uint32_t decimal1 = convertHexToDecimal(hex1);
+      	uint32_t decimal2 = convertHexToDecimal(hex2);
+      	addDecimal(decimal1, decimal2);
     }
   }
 
@@ -73,25 +100,3 @@ int main(){
 //   return addHexHelper(decimal1, decimal2);
 // }
     
-uint32_t convertHexToDecimal(uint32_t hex){ // maybe put a &
-  // hex = std::stoul(hex, nullptr, 16);
-  // unsigned long hex1;
-  // hex1 = std::stoul(hex,nullptr,16);
-  // uint32_t decimal = hex1;
-  // return decimal;
-  std::stringstream ss;
-  ss << std::hex << hex;
-  ss >> hex;
-  return hex;
-}
-
-void addDecimal(uint32_t decimal1, uint32_t decimal2){
-  uint32_t hex3;
-  hex3 = decimal1 + decimal2;
-  //if (hex3 > UINT32_MAX){ hex3 - UINT32_MAX; }
-  printDecimalToHex(hex3);
-}
-
-void printDecimalToHex(uint32_t decimal){
-  std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
-}
