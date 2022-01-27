@@ -45,19 +45,20 @@ int main(){
 
 	std::ifstream file(filename);
   
-	std::cout << "here";
+	std::cout << "1";
 	file.open(filename);
-	std::cout << "here";
+	std::cout << "2";
 
-	if (file.is_open()){
+	// if (file.is_open()){
     std::string func;
     uint32_t hex1, hex2;
+	std::cout << "3";
     while (file >> func >> hex1 >> hex2){
-		std::cout << "here";
+		std::cout << "4";
       	uint32_t decimal1 = convertHexToDecimal(hex1);
       	uint32_t decimal2 = convertHexToDecimal(hex2);
       	addDecimal(decimal1, decimal2);
-    }
+    // }
   }
 
   // create a function to take in 3 string values. add, hex, hex.
