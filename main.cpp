@@ -17,10 +17,10 @@
 #include <sstream>
 
 /**
- * @brief 
+ * @brief Converts a uint32_t base 16 (hex) value to a base 10 value.
  * 
- * @param hex 
- * @return uint32_t 
+ * @param hex the hex to be converted
+ * @return uint32_t The converted base 10 value
  */
 uint32_t convertHexToDecimal(uint32_t hex){
 	std::stringstream ss;
@@ -30,20 +30,20 @@ uint32_t convertHexToDecimal(uint32_t hex){
 }
 
 /**
- * @brief 
+ * @brief Prints the base 16 (hex) form in "0x" format from a uint32_t base 10 value.
  * 
- * @param decimal 
+ * @param decimal The base 10 value to be printed in base 16 form
  */
 void printDecimalToHex(uint32_t decimal){
 	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << decimal << std::endl;
 }
 
 /**
- * @brief 
+ * @brief Adds 2 uint32_t base 10 values together.
  * 
- * @param decimal1 
- * @param decimal2 
- * @return uint32_t 
+ * @param decimal1 The first base 10 value to be added
+ * @param decimal2 The second base 10 value to be added
+ * @return uint32_t The base 10 result of the addition of two base 10 values.
  */
 uint32_t addDecimal(uint32_t decimal1, uint32_t decimal2){
 	uint32_t hex3;
@@ -52,31 +52,11 @@ uint32_t addDecimal(uint32_t decimal1, uint32_t decimal2){
 }
 
 /**
- * @brief 
+ * @brief The main driver function that takes in a file and processes it.
  * 
  * @return int 
  */
 int main(){
-
-	//ignore the 0x
-	//add the 2 hexes by using a dictionary formula
-	//each digit corresponds to a number
-	//make sure to remember that there's a carry and a sum
-	//the remainder will be the carry?
-	//the sum will be the not remainder?????
-
-	//read the text input line by line. this comes from a file
-	// create a function to take in 3 string values. add, hex, hex.
-	// save the first word to a variable and match that first word to an operation
-	// save the second word to variable top and truncate the first 2 digits
-	// save the third word to variable bot and truncate the first 2 digits
-	// add the top to the bot using hex math
-		// this is done by converting each digit to a base 10 number and adding them together
-	// save the remainder to variable remainder (need to figure this out)
-	// add variable remainder to top and to bot. this might just be the regular process or something. needs more work.
-	// convert to uint32_t and print out
-	// print 2 captured numbers
-	// print solution
 	std::string filename;
 	std::cout << "What's the filename? ";
 	std::cin >> filename;
