@@ -4,14 +4,8 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-// #include "helperLibrary.h"
 
-uint32_t convertHexToDecimal(uint32_t hex){ // maybe put a &
-	// hex = std::stoul(hex, nullptr, 16);
-	// unsigned long hex1;
-	// hex1 = std::stoul(hex,nullptr,16);
-	// uint32_t decimal = hex1;
-	// return decimal;
+uint32_t convertHexToDecimal(uint32_t hex){
 	std::stringstream ss;
 	ss << std::hex << hex;
 	ss >> hex;
@@ -19,14 +13,13 @@ uint32_t convertHexToDecimal(uint32_t hex){ // maybe put a &
 }
 
 void printDecimalToHex(uint32_t decimal){
-  	// std::cout << std::setfill('0') << std::setw(8) << std::hex << decimal;
 	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << decimal << std::endl;
 }
 
-void addDecimal(uint32_t decimal1, uint32_t decimal2){
+uint32_t addDecimal(uint32_t decimal1, uint32_t decimal2){
 	uint32_t hex3;
 	hex3 = decimal1 + decimal2;
-	printDecimalToHex(hex3); // possibly refactor this?
+	return hex3;
 }
 
 int main(){
@@ -47,11 +40,14 @@ int main(){
 
 	if (file.is_open()){
 		std::string func;
-		uint32_t hex1, hex2; // find a way to convert string to uint or file to uint
+		uint32_t hex1, hex2;
 		while (file >> func >> std::hex >> hex1 >> hex2){
+			std::cout << func << " FUNCTION: ";
+			std::cout << "0x" << hex1 << " + ";
+			std::cout << "0x" << hex2 << " : ";
 			uint32_t decimal1 = convertHexToDecimal(hex1);
 			uint32_t decimal2 = convertHexToDecimal(hex2);
-			addDecimal(decimal1, decimal2);
+			printDecimalToHex(addDecimal(decimal1, decimal2));
     	}
  	}
   	// std::cout << "6";
