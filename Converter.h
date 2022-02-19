@@ -5,14 +5,16 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+// #include <algorithm>
 
 class Converter{
 	uint32_t hex1;
 	uint32_t hex2;
-	uint32_t decimal;
-public:
-	Converter(uint32_t hex1, uint32_t hex2);
-	void printOut(); // Prints out in decimal
+	uint32_t finalHex;
+	std::string func;
+	char functionList[9][4] = {"add" , "and" , "asr" , "lsr" , "lsl" , "not" , "orr" , "sub" , "xor"};
+	int find(std::string func);
+	void printOut(); // Prints out in hex
 	void addFunction(); // Add the operands
 	void andFunction(); // Do a bitwise AND of the operands
 	void asrFunction(); // Do a 1-bit arithmetic shift right for signed numbers
@@ -22,9 +24,6 @@ public:
 	void orrFunction(); // Do a bitwise OR of the operands
 	void subFunction(); // Subtract the second operand from the first operand
 	void xorFunction(); // Do a bitwise exclusive OR of the operands
+public:
+	Converter(std::string func, uint32_t hex1, uint32_t hex2);
 };
-
-Converter::Converter(uint32_t hex1, uint32_t hex2)
-	: hex1(hex1)
-	, hex2(hex2)
-{}
