@@ -7,13 +7,13 @@
 #include <sstream>
 
 class Converter{
-	uint32_t hex1;
-	uint32_t hex2;
-	uint32_t finalHex;
-	std::string func;
-	char functionList[9][4] = {"ADD" , "AND" , "ASR" , "LSR" , "LSL" , "NOT" , "ORR" , "SUB" , "XOR"};
+	uint32_t hex1 = 0;
+	uint32_t hex2 = 0;
+	uint32_t finalHex = 0;
+	std::string func = "";
+	char functionList[9][4] = {"ADD" , "AND" , "ORR" , "SUB" , "XOR" , "ASR" , "LSR" , "LSL" , "NOT"};
 
-	void printOut(); // Prints out in hex
+	void printOut(); // Prints out final hex
 	void addFunction(); // Add the operands
 	void andFunction(); // Do a bitwise AND of the operands
 	void asrFunction(); // Do a 1-bit arithmetic shift right for signed numbers
@@ -23,7 +23,9 @@ class Converter{
 	void orrFunction(); // Do a bitwise OR of the operands
 	void subFunction(); // Subtract the second operand from the first operand
 	void xorFunction(); // Do a bitwise exclusive OR of the operands
+
 public:
+  Converter() = default;
 	Converter(std::string func, uint32_t hex1, uint32_t hex2);
   Converter(std::string func, uint32_t hex1);
   int findInFunctionList(std::string func);

@@ -24,20 +24,19 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
 Converter::Converter(std::string func, uint32_t hex1)
 	: func(func)
 	, hex1(hex1)
-	, hex2(0)
 {
 	int funcType = findInFunctionList(func);
 	switch(funcType){
-		case 0:{ std::cout << "Function not found" << std::endl; break; }
 		case 1:{ addFunction(); break; }
 		case 2:{ andFunction(); break; }
-		case 3:{ asrFunction(); break; }
-		case 4:{ lsrFunction(); break; }
-		case 5:{ lslFunction(); break; }
-		case 6:{ notFunction(); break; }
-		case 7:{ orrFunction(); break; }
-		case 8:{ subFunction(); break; }
-		case 9:{ xorFunction(); break; }
+		case 6:{ asrFunction(); break; }
+		case 7:{ lsrFunction(); break; }
+		case 8:{ lslFunction(); break; }
+		case 9:{ notFunction(); break; }
+		case 3:{ orrFunction(); break; }
+		case 4:{ subFunction(); break; }
+		case 5:{ xorFunction(); break; }
+    default:{ std::cout << "Function not found" << std::endl; break; }
 	}
 }
 
