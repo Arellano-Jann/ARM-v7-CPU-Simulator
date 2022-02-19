@@ -34,3 +34,14 @@ Using the provided text file as an example input. You will be tasked with creati
 HINT: You may find it helpful to store this value in a variable, should you ever need to retrieve the information or store it in a simulated register. But this is not required for part 1. The result of the addition operation must be displayed to the terminal or build environment.
 
 Your code should follow proper code commenting and indentation procedures.
+
+# Operation List:
+1. ADD - Add the operands 
+2. AND - Do a bitwise AND of the operands 
+3. ASR - Do a 1-bit arithmetic shift right on the first operand 
+4. LSR - Do a 1-bit logical shift right on the first operand 
+5. LSL - Do a 1-bit logical shift left on the first operand 
+6. NOT - Do a bitwise NOT on the first operand 
+7. ORR - Do a bitwise OR of the operands 
+8. SUB - Subtract the second operand from the first operand 
+9. XOR - Do a bitwise exclusive OR of the operands
