@@ -5,7 +5,6 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-// #include <algorithm>
 
 class Converter{
 	uint32_t hex1;
@@ -13,7 +12,7 @@ class Converter{
 	uint32_t finalHex;
 	std::string func;
 	char functionList[9][4] = {"ADD" , "AND" , "ASR" , "LSR" , "LSL" , "NOT" , "ORR" , "SUB" , "XOR"};
-	int find(std::string func);
+
 	void printOut(); // Prints out in hex
 	void addFunction(); // Add the operands
 	void andFunction(); // Do a bitwise AND of the operands
@@ -26,4 +25,6 @@ class Converter{
 	void xorFunction(); // Do a bitwise exclusive OR of the operands
 public:
 	Converter(std::string func, uint32_t hex1, uint32_t hex2);
+  Converter(std::string func, uint32_t hex1);
+  int findInFunctionList(std::string func);
 };

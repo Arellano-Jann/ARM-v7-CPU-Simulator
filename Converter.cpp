@@ -6,7 +6,7 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
 	, hex1(hex1)
 	, hex2(hex2)
 {
-	int funcType = find(func);
+	int funcType = findInFunctionList(func);
 	switch(funcType){
 		case 0:{ std::cout << "Function not found" << std::endl; break; }
 		case 1:{ addFunction(); break; }
@@ -21,13 +21,33 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
 	}
 }
 
-int Converter::find(std::string func){
+Converter::Converter(std::string func, uint32_t hex1)
+	: func(func)
+	, hex1(hex1)
+	, hex2(0)
+{
+	int funcType = findInFunctionList(func);
+	switch(funcType){
+		case 0:{ std::cout << "Function not found" << std::endl; break; }
+		case 1:{ addFunction(); break; }
+		case 2:{ andFunction(); break; }
+		case 3:{ asrFunction(); break; }
+		case 4:{ lsrFunction(); break; }
+		case 5:{ lslFunction(); break; }
+		case 6:{ notFunction(); break; }
+		case 7:{ orrFunction(); break; }
+		case 8:{ subFunction(); break; }
+		case 9:{ xorFunction(); break; }
+	}
+}
+
+int Converter::findInFunctionList(std::string func){
 	for (int i = 0; i < 9; i++){
 		if (func==(functionList[i])){
 			return i+1;
 		}
 	}
-	return 0;
+	return -1;
 }
 
 /**
