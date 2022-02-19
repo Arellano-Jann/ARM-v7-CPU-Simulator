@@ -33,8 +33,8 @@ int main(){
 		std::string func;
 		uint32_t hex1, hex2;
 		while (file >> func >> std::hex >> hex1 >> hex2){
-			std::cout << "0x" << hex1 << " " << func << " ";
-			std::cout << "0x" << hex2 << " : ";
+			std::cout << "0x" << std::hex << hex1 << " " << func << " ";
+			std::cout << "0x" << std::hex << hex2 << " : ";
 			Converter converter(func, hex1, hex2); // check if this gets destroyed. so no dupe values
     	}
  	}
