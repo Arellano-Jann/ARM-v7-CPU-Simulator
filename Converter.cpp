@@ -24,7 +24,6 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
 Converter::Converter(std::string func, uint32_t hex1)
 	: func(func)
 	, hex1(hex1)
-	, hex2(0)
 {
 	int funcType = findInFunctionList(func);
 	switch(funcType){

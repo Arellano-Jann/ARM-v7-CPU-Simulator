@@ -7,10 +7,10 @@
 #include <sstream>
 
 class Converter{
-	uint32_t hex1;
-	uint32_t hex2;
-	uint32_t finalHex;
-	std::string func;
+	uint32_t hex1 = 0;
+	uint32_t hex2 = 0;
+	uint32_t finalHex = 0;
+	std::string func = "";
 	char functionList[9][4] = {"ADD" , "AND" , "ASR" , "LSR" , "LSL" , "NOT" , "ORR" , "SUB" , "XOR"};
 
 	void printOut(); // Prints out in hex
