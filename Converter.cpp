@@ -26,15 +26,15 @@ void Converter::andFunction(){
 }
 
 void Converter::asrFunction(){
-	
+	decimal = hex1/2;
 }
 
 void Converter::lsrFunction(){
-	
+	decimal = hex1/2;
 }
 
 void Converter::lslFunction(){
-	
+	decimal = hex1*2;
 }
 
 void Converter::notFunction(){
