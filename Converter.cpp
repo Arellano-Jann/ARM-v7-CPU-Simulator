@@ -20,8 +20,9 @@ void Converter::addFunction(){
 	decimal = hex1 + hex2;
 }
 
+
 void Converter::andFunction(){
-	
+	decimal = hex1 and hex2;
 }
 
 void Converter::asrFunction(){
@@ -37,18 +38,18 @@ void Converter::lslFunction(){
 }
 
 void Converter::notFunction(){
-	
+	decimal = not hex1;
 }
 
 void Converter::orrFunction(){
-	
+	decimal = hex1 or hex2;
 }
 
 void Converter::subFunction(){
-	
+	decimal = hex1 - hex2;
 }
 
 void Converter::xorFunction(){
-	
+	decimal = hex1 xor hex2;
 }
 

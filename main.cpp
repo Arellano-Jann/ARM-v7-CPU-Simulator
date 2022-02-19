@@ -46,11 +46,16 @@ int main(){
 		std::string func;
 		uint32_t hex1, hex2;
 		while (file >> func >> std::hex >> hex1 >> hex2){
+			Converter converter(hex1, hex2); // check if this gets destroyed. so no dupe values
 			std::cout << "0x" << hex1 << func;
 			std::cout << "0x" << hex2 << " : ";
+
+			converter.addFunction();
+			converter.printOut();
+
 			// uint32_t decimal1 = convertHexToDecimal(hex1);
 			// uint32_t decimal2 = convertHexToDecimal(hex2);
-			printDecimalToHex(addDecimal(hex1, hex2));
+			// printDecimalToHex(addDecimal(hex1, hex2));
     	}
  	}
   	file.close();
