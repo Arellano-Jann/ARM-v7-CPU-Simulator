@@ -32,8 +32,10 @@ int main(){
 	if (file.is_open()){
 		std::string func;
 		uint32_t hex1, hex2;
+    std::string line;
 
-    while (file >> func){
+    while (getline(file, line)){
+      line >> func; // doesn't work. needs to be string stream
       Converter functionFinder;
       if (functionFinder.findInFunctionList(func) > 4){
         // single input hex
