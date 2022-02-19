@@ -12,7 +12,7 @@ class Converter{
 	uint32_t hex2;
 	uint32_t finalHex;
 	std::string func;
-	char functionList[9][4] = {"add" , "and" , "asr" , "lsr" , "lsl" , "not" , "orr" , "sub" , "xor"};
+	char functionList[9][4] = {"ADD" , "AND" , "ASR" , "LSR" , "LSL" , "NOT" , "ORR" , "SUB" , "XOR"};
 	int find(std::string func);
 	void printOut(); // Prints out in hex
 	void addFunction(); // Add the operands

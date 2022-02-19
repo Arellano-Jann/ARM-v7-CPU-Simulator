@@ -7,7 +7,6 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
 	, hex2(hex2)
 {
 	int funcType = find(func);
-	std::cout << funcType;
 	switch(funcType){
 		case 0:{ std::cout << "Function not found" << std::endl; break; }
 		case 1:{ addFunction(); break; }
