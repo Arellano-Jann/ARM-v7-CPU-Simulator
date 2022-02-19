@@ -37,18 +37,16 @@ int main(){
       Converter functionFinder;
       if (functionFinder.findInFunctionList(func) > 4){
         // single input hex
-        while (file >> std::hex >> hex1){
+        file >> std::hex >> hex1;
           std::cout << "0x" << std::hex << hex1 << " " << func << " : ";
           Converter converter(func, hex1);
-        }
       }
       else{
         // double input hex
-        while (file >> std::hex >> hex1 >> hex2){
+        file >> std::hex >> hex1 >> hex2;
           std::cout << "0x" << std::hex << hex1 << " " << func << " ";
 		      std::cout << "0x" << std::hex << hex2 << " : ";
 		     	Converter converter(func, hex1, hex2); 
-      }
     }
 		// while (file >> func >> std::hex >> hex1 >> hex2){
 		// 	std::cout << "0x" << std::hex << hex1 << " " << func << " ";
