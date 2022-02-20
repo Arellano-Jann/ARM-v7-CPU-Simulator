@@ -8,7 +8,6 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
 {
 	int funcType = findInFunctionList(func);
 	switch(funcType){
-		case 0:{ std::cout << "Function not found" << std::endl; break; }
 		case 1:{ addFunction(); break; }
 		case 2:{ andFunction(); break; }
 		case 6:{ asrFunction(); break; }
@@ -18,6 +17,7 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
 		case 3:{ orrFunction(); break; }
 		case 4:{ subFunction(); break; }
 		case 5:{ xorFunction(); break; }
+    default:{ std::cout << "Function not found" << std::endl; break; }
 	}
 }
 

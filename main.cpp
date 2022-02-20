@@ -35,7 +35,7 @@ int main(){
 
     while (file >> func){
       Converter functionFinder;
-      if (functionFinder.findInFunctionList(func) > 4){
+      if (functionFinder.findInFunctionList(func) > 5){
         // single input hex
         file >> std::hex >> hex1;
           std::cout << "0x" << std::hex << hex1 << " " << func << " : ";
