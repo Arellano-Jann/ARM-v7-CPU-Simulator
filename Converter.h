@@ -11,11 +11,7 @@ class Converter{
 	uint32_t hex2 = 0;
 	uint32_t finalHex = 0;
 	std::string func = "";
-<<<<<<< HEAD
-	char functionList[9][4] = {"ADD" , "AND" , "ASR" , "LSR" , "LSL" , "NOT" , "ORR" , "SUB" , "XOR"};
-=======
 	char functionList[9][4] = {"ADD" , "AND" , "ORR" , "SUB" , "XOR" , "ASR" , "LSR" , "LSL" , "NOT"};
->>>>>>> Input-Parser
 
 	void printOut(); // Prints out final hex
 	void addFunction(); // Add the operands
