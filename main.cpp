@@ -32,10 +32,26 @@ int main(){
 	if (file.is_open()){
 		std::string func;
 		uint32_t hex1, hex2;
-		while (file >> func >> std::hex >> hex1 >> hex2){
-			std::cout << "0x" << std::hex << hex1 << " " << func << " ";
-			std::cout << "0x" << std::hex << hex2 << " : ";
-			Converter converter(func, hex1, hex2); // check if this gets destroyed. so no dupe values
+
+    while (file >> func){
+      Converter functionFinder;
+      if (functionFinder.findInFunctionList(func) > 5){
+        // single input hex
+        file >> std::hex >> hex1;
+          std::cout << "0x" << std::hex << hex1 << " " << func << " : ";
+          Converter converter(func, hex1);
+      }
+      else{
+        // double input hex
+        file >> std::hex >> hex1 >> hex2;
+          std::cout << "0x" << std::hex << hex1 << " " << func << " ";
+		      std::cout << "0x" << std::hex << hex2 << " : ";
+		     	Converter converter(func, hex1, hex2); 
+    }
+		// while (file >> func >> std::hex >> hex1 >> hex2){
+		// 	std::cout << "0x" << std::hex << hex1 << " " << func << " ";
+		// 	std::cout << "0x" << std::hex << hex2 << " : ";
+		// 	Converter converter(func, hex1, hex2); // check if this gets destroyed. so no dupe values
     	}
  	}
   	file.close();
