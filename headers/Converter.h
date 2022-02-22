@@ -6,6 +6,10 @@
 #include <string>
 #include <sstream>
 
+/**
+ * @brief Determines the function and does an operation depending on the function found in functionList. It prints it out afterwards.
+ * 
+ */
 class Converter{
 	uint32_t hex1 = 0;
 	uint32_t hex2 = 0;
@@ -25,8 +29,8 @@ class Converter{
 	void xorFunction(); // Do a bitwise exclusive OR of the operands
 
 public:
-  Converter() = default;
+	Converter() = default;
 	Converter(std::string func, uint32_t hex1, uint32_t hex2);
-  Converter(std::string func, uint32_t hex1);
-  int findInFunctionList(std::string func);
+	Converter(std::string func, uint32_t hex1);
+	int findInFunctionList(std::string func);
 };
