@@ -71,6 +71,13 @@ int Converter::findInFunctionList(std::string func){
 	return -1;
 }
 
+
+int Converter::findRegister(std::string reg){
+	reg.erase(0,1);
+	// reg = reg.substr(1)
+	return (int) reg;
+}
+
 // /**
 //  * @brief Prints the base 16 (hex) form in "0x" format.
 //  * 
