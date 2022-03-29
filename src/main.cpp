@@ -43,38 +43,38 @@ struct GlobalRegister{
  * @return int 
  */
 int main(){
-	std::cout << GlobalRegister::r0 << std::endl;
-	GlobalRegister r0 = (uint32_t)0x5;
-	std::cout << GlobalRegister::r0 << std::endl;
+	// std::cout << GlobalRegister.r0 << std::endl;
+	// GlobalRegister.r0 = 0x5;
+	// std::cout << GlobalRegister.r0 << std::endl;
 
-	// std::string filename = "";
-	// std::cout << "What's the filename? ";
-	// std::cin >> filename;
+	std::string filename = "";
+	std::cout << "What's the filename? ";
+	std::cin >> filename;
 
-	// std::ifstream file(filename);
+	std::ifstream file(filename);
 
-	// if (file.is_open()){
-	// 	std::string func;
-	// 	uint32_t Rd, Rn, Rm;
+	if (file.is_open()){
+		std::string func;
+		uint32_t Rd, Rn, Rm;
 
-	// 	while (file >> func){
-	// 		Converter functionFinder;
-	// 		if (functionFinder.findInFunctionList(func) > 5){
-	// 			// single input hex
-	// 			file >> std::hex >> Rd >> Rn;
-	// 			std::cout << "0x" << std::hex << Rn << " " << func << " : ";
-	// 			Converter converter(func, Rd, Rn);
-	// 		}
-	// 		else{
-	// 			// double input hex
-	// 			file >> std::hex >> Rd >> Rn >> Rm;
-	// 			std::cout << "0x" << std::hex << Rn << " " << func << " ";
-	// 				std::cout << "0x" << std::hex << Rm << " : ";
-	// 					Converter converter(func, Rd, Rn, Rm); 
-	// 		}
-	// 	}
- 	// }
-  	// file.close();
+		while (file >> func){
+			Converter functionFinder;
+			if (functionFinder.findInFunctionList(func) > 5){
+				// single input hex
+				file >> std::hex >> Rd >> Rn;
+				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
+				Converter converter(func, Rd, Rn);
+			}
+			else{
+				// double input hex
+				file >> std::hex >> Rd >> Rn >> Rm;
+				std::cout << "0x" << std::hex << Rn << " " << func << " ";
+					std::cout << "0x" << std::hex << Rm << " : ";
+						Converter converter(func, Rd, Rn, Rm); 
+			}
+		}
+ 	}
+  	file.close();
   
   return 0;
 }
