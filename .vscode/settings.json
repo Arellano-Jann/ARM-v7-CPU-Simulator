@@ -46,5 +46,8 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "terminals.configPath": "C:\\Users\\An Asian\\Desktop\\CS School\\VS Code JSON",
+    "terminals.autorun": true,
+    "terminals.autokill": true
 }
