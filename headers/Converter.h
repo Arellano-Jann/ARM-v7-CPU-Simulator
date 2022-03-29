@@ -11,11 +11,11 @@
  * 
  */
 class Converter{
-	uint32_t hex1 = 0;
-	uint32_t hex2 = 0;
-	uint32_t finalHex = 0;
+	uint32_t Rn = 0;
+	uint32_t Rm = 0;
+	uint32_t Rd = 0;
 	std::string func = "";
-	char functionList[9][4] = {"ADD" , "AND" , "ORR" , "SUB" , "XOR" , "ASR" , "LSR" , "LSL" , "NOT"};
+	char functionList[10][4] = {"ADD" , "AND" , "ORR" , "SUB" , "XOR" , "ASR" , "LSR" , "LSL" , "MOV" , "NOT"};
 
 	void printOut(); // Prints out final hex
 	void addFunction(); // Add the operands
@@ -27,10 +27,11 @@ class Converter{
 	void orrFunction(); // Do a bitwise OR of the operands
 	void subFunction(); // Subtract the second operand from the first operand
 	void xorFunction(); // Do a bitwise exclusive OR of the operands
+	void movFunction(); // Move the second (immediate) operand to the first operand
 
 public:
 	Converter() = default;
-	Converter(std::string func, uint32_t hex1, uint32_t hex2);
-	Converter(std::string func, uint32_t hex1);
+	Converter(std::string func, uint32_t Rn, uint32_t Rm);
+	Converter(std::string func, uint32_t Rn);
 	int findInFunctionList(std::string func);
 };

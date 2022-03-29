@@ -23,6 +23,23 @@
  * @return int 
  */
 int main(){
+	uint32_t r0 = 0x0;
+	uint32_t r1 = 0x0;
+	uint32_t r2 = 0x0;
+	uint32_t r3 = 0x0;
+	uint32_t r4 = 0x0;
+	uint32_t r5 = 0x0;
+	uint32_t r6 = 0x0;
+	uint32_t r7 = 0x0;
+	// uint32_t r8 = 0x0;
+	// uint32_t r9 = 0x0;
+	// uint32_t r10 = 0x0;
+	// uint32_t r11 = 0x0;
+	// uint32_t r12 = 0x0;
+	// uint32_t r13 = 0x0;
+	// uint32_t r14 = 0x0;
+	// uint32_t r15 = 0x0;
+
 	std::string filename = "";
 	std::cout << "What's the filename? ";
 	std::cin >> filename;

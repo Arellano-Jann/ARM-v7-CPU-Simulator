@@ -4,13 +4,13 @@
  * @brief Constructs a new Converter object that takes in three parameters for 2 input assembly instructions
  * 
  * @param func 
- * @param hex1 
- * @param hex2 
+ * @param Rn 
+ * @param Rm 
  */
-Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
+Converter::Converter(std::string func, uint32_t Rn, uint32_t Rm)
 	: func(func)
-	, hex1(hex1)
-	, hex2(hex2)
+	, Rn(Rn)
+	, Rm(Rm)
 {
 	int funcType = findInFunctionList(func);
 	switch(funcType){
@@ -31,11 +31,11 @@ Converter::Converter(std::string func, uint32_t hex1, uint32_t hex2)
  * @brief Constructs a new Converter object that takes in two parameters for 1 input assembly instructions
  * 
  * @param func 
- * @param hex1 
+ * @param Rn 
  */
-Converter::Converter(std::string func, uint32_t hex1)
+Converter::Converter(std::string func, uint32_t Rn)
 	: func(func)
-	, hex1(hex1)
+	, Rn(Rn)
 {
 	int funcType = findInFunctionList(func);
 	switch(funcType){
@@ -72,86 +72,91 @@ int Converter::findInFunctionList(std::string func){
  * 
  */
 void Converter::printOut(){
-	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << finalHex << std::endl;
+	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << Rd << std::endl;
 }
 
 /**
- * @brief Adds hex1 and hex2 together.
+ * @brief Adds Rn and Rm together.
  * 
  */
 void Converter::addFunction(){
-	finalHex = hex1 + hex2;
+	Rd = Rn + Rm;
 	printOut();
 }
 
 /**
- * @brief Ands hex1 and hex2 together.
+ * @brief Ands Rn and Rm together.
  * 
  */
 void Converter::andFunction(){
-	finalHex = hex1 & hex2;
+	Rd = Rn & Rm;
 	printOut();
 }
 
 /**
- * @brief Shifts hex1 and hex2 arithmetically right 1 place.
+ * @brief Shifts Rn and Rm arithmetically right 1 place.
  * 
  */
 void Converter::asrFunction(){
-	finalHex = hex1/2; // hex1 >> 1
+	Rd = Rn/2; // Rn >> 1
 	printOut();
 }
 
 /**
- * @brief Shifts hex1 and hex2 logically right 1 place.
+ * @brief Shifts Rn and Rm logically right 1 place.
  * 
  */
 void Converter::lsrFunction(){
-	finalHex = hex1/2; // hex1 >> 1
+	Rd = Rn/2; // Rn >> 1
 	printOut();
 }
 
 /**
- * @brief Shifts hex1 and hex2 logically left 1 place.
+ * @brief Shifts Rn and Rm logically left 1 place.
  * 
  */
 void Converter::lslFunction(){
-	finalHex = hex1*2; // hex1 << 1
+	Rd = Rn*2; // Rn << 1
 	printOut();
 }
 
 /**
- * @brief Nots hex1 and hex2 together.
+ * @brief Nots Rn and Rm together.
  * 
  */
 void Converter::notFunction(){
-	finalHex = ~hex1;
+	Rd = ~Rn;
 	printOut();
 }
 
 /**
- * @brief Ors hex1 and hex2 together.
+ * @brief Ors Rn and Rm together.
  * 
  */
 void Converter::orrFunction(){
-	finalHex = hex1 | hex2;
+	Rd = Rn | Rm;
 	printOut();
 }
 
 /**
- * @brief Subtracts hex1 and hex2 together.
+ * @brief Subtracts Rn and Rm together.
  * 
  */
 void Converter::subFunction(){
-	finalHex = hex1 - hex2;
+	Rd = Rn - Rm;
 	printOut();
 }
 
 /**
- * @brief Exclusive Ors hex1 and hex2 together.
+ * @brief Exclusive Ors Rn and Rm together.
  * 
  */
 void Converter::xorFunction(){
-	finalHex = hex1 ^ hex2;
+	Rd = Rn ^ Rm;
+	printOut();
+}
+
+void Converter::movFunction(){
+	Rd = Rn;
 	printOut();
 }
