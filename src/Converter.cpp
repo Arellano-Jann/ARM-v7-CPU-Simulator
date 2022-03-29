@@ -71,13 +71,13 @@ int Converter::findInFunctionList(std::string func){
 	return -1;
 }
 
-/**
- * @brief Prints the base 16 (hex) form in "0x" format.
- * 
- */
-void Converter::printOut(){
-	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << Rd << std::endl;
-}
+// /**
+//  * @brief Prints the base 16 (hex) form in "0x" format.
+//  * 
+//  */
+// void Converter::printOut(){
+// 	std::cout << "0x" << std::setfill('0') << std::setw(8) << std::hex << Rd << std::endl;
+// }
 
 /**
  * @brief Adds Rn and Rm together.
@@ -85,7 +85,7 @@ void Converter::printOut(){
  */
 void Converter::addFunction(){
 	Rd = Rn + Rm;
-	printOut();
+	// printOut();
 }
 
 /**
@@ -94,7 +94,7 @@ void Converter::addFunction(){
  */
 void Converter::andFunction(){
 	Rd = Rn & Rm;
-	printOut();
+	// printOut();
 }
 
 /**
@@ -103,7 +103,7 @@ void Converter::andFunction(){
  */
 void Converter::asrFunction(){
 	Rd = Rn/2; // Rn >> 1
-	printOut();
+	// printOut();
 }
 
 /**
@@ -112,7 +112,7 @@ void Converter::asrFunction(){
  */
 void Converter::lsrFunction(){
 	Rd = Rn/2; // Rn >> 1
-	printOut();
+	// printOut();
 }
 
 /**
@@ -121,7 +121,7 @@ void Converter::lsrFunction(){
  */
 void Converter::lslFunction(){
 	Rd = Rn*2; // Rn << 1
-	printOut();
+	// printOut();
 }
 
 /**
@@ -130,7 +130,7 @@ void Converter::lslFunction(){
  */
 void Converter::notFunction(){
 	Rd = ~Rn;
-	printOut();
+	// printOut();
 }
 
 /**
@@ -139,7 +139,7 @@ void Converter::notFunction(){
  */
 void Converter::orrFunction(){
 	Rd = Rn | Rm;
-	printOut();
+	// printOut();
 }
 
 /**
@@ -148,7 +148,7 @@ void Converter::orrFunction(){
  */
 void Converter::subFunction(){
 	Rd = Rn - Rm;
-	printOut();
+	// printOut();
 }
 
 /**
@@ -157,10 +157,10 @@ void Converter::subFunction(){
  */
 void Converter::xorFunction(){
 	Rd = Rn ^ Rm;
-	printOut();
+	// printOut();
 }
 
 void Converter::movFunction(){
 	Rd = Rn;
-	printOut();
+	// printOut();
 }

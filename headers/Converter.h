@@ -17,7 +17,7 @@ class Converter{
 	std::string func = "";
 	char functionList[10][4] = {"ADD" , "AND" , "ORR" , "SUB" , "XOR" , "ASR" , "LSR" , "LSL" , "NOT" , "MOV"};
 
-	void printOut(); // Prints out final hex
+	// void printOut(); // Prints out final hex
 	void addFunction(); // Add the operands
 	void andFunction(); // Do a bitwise AND of the operands
 	void asrFunction(); // Do a 1-bit arithmetic shift right for signed numbers
@@ -34,4 +34,5 @@ public:
 	Converter(std::string func, uint32_t Rd, uint32_t Rn, uint32_t Rm);
 	Converter(std::string func, uint32_t Rd, uint32_t Rn);
 	int findInFunctionList(std::string func);
+	uint32_t getRd() const{ return Rd; }
 };
