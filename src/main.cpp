@@ -68,7 +68,7 @@ int main(){
 			Converter functionFinder;
 			if (functionFinder.findInFunctionList(func) > 5){
 				// single input
-				file >> std::hex >> Rd >> Rn;
+				file >> Rd >> std::hex >> Rn;
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 
 				Converter converter(func, Rn);
@@ -78,11 +78,11 @@ int main(){
 			}
 			else{
 				// double input
-				file >> std::hex >> Rd >> Rn >> Rm;
+				file >> Rd >> std::hex >> Rn >> Rm;
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 				std::cout << "0x" << std::hex << Rm << " : ";
 				Converter converter(func, Rd, Rn, Rm);
-				Rd = converter.getRd();
+				registers[Rd, converter.getRd()];
 
 			}
 		}
