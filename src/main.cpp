@@ -73,7 +73,7 @@ int main(){
 				Converter converter(func, registers[Rn]);
 				// Converter registerFinder;
 				// int reg = registerFinder.findRegister(Rd);
-				registers[Rd, converter.getRd()];
+				registers[Rd] = converter.getRd();
 			}
 			else{
 				// double input
@@ -81,7 +81,7 @@ int main(){
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 				std::cout << "0x" << std::hex << Rm << " : ";
 				Converter converter(func, registers[Rn], registers[Rm]);
-				registers[Rd, converter.getRd()];
+				registers[Rd] = converter.getRd();
 
 			}
 		}
