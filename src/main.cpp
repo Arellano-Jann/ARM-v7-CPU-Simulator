@@ -59,7 +59,7 @@ int main(){
 	std::cin >> filename;
 
 	std::ifstream file(filename);
-
+	// need change to pass in registers instead
 	if (file.is_open()){
 		std::string func;
 		uint32_t Rd, Rn, Rm;
