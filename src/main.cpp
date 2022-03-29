@@ -70,10 +70,11 @@ int main(){
 				// single input
 				file >> std::hex >> Rd >> Rn;
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
-				Converter converter(func, Rd, Rn);
-				Converter registerFinder;
-				int reg = registerFinder.findRegister(Rd);
-				r1 = converter.getRd();
+
+				Converter converter(func, Rn);
+				// Converter registerFinder;
+				// int reg = registerFinder.findRegister(Rd);
+				registers[Rd, converter.getRd()];
 			}
 			else{
 				// double input
