@@ -35,7 +35,7 @@ enum GlobalRegister : uint32_t{
 	// r13 = 0x0;
 	// r14 = 0x0;
 	// r15 = 0x0;
-}
+};
 
 /**
  * @brief The main driver function that takes in a file of assembly code and processes it.
