@@ -61,14 +61,13 @@ int main(){
 	std::ifstream file(filename);
 	// need change to pass in registers instead
 	if (file.is_open()){
-		std::string func, Rd;
-		uint32_t Rn, Rm;
+		std::string func, Rd, Rn, Rm;
 
 		while (file >> func){
 			Converter functionFinder;
 			if (functionFinder.findInFunctionList(func) > 5){
 				// single input
-				file >> Rd >> std::hex >> Rn;
+				file >> Rd >> Rn;
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 
 				Converter converter(func, Rn);
@@ -78,7 +77,7 @@ int main(){
 			}
 			else{
 				// double input
-				file >> Rd >> std::hex >> Rn >> Rm;
+				file >> Rd >> Rn >> Rm;
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 				std::cout << "0x" << std::hex << Rm << " : ";
 				Converter converter(func, Rd, Rn, Rm);
