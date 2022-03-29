@@ -75,7 +75,7 @@ int Converter::findInFunctionList(std::string func){
 int Converter::findRegister(std::string reg){
 	reg.erase(0,1);
 	// reg = reg.substr(1)
-	return (int) reg;
+	return std::stoi(reg);
 }
 
 // /**
