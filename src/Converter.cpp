@@ -23,6 +23,7 @@ Converter::Converter(std::string func, uint32_t Rn, uint32_t Rm)
 		case 3:{ orrFunction(); break; }
 		case 4:{ subFunction(); break; }
 		case 5:{ xorFunction(); break; }
+		case 10:{ movFunction(); break; }
     	default:{ std::cout << "Function not found" << std::endl; break; }
 	}
 }
@@ -48,6 +49,7 @@ Converter::Converter(std::string func, uint32_t Rn)
 		case 3:{ orrFunction(); break; }
 		case 4:{ subFunction(); break; }
 		case 5:{ xorFunction(); break; }
+		case 10:{ movFunction(); break; }
     	default:{ std::cout << "Function not found" << std::endl; break; }
 	}
 }

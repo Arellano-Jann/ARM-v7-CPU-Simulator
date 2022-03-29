@@ -11,11 +11,11 @@
  * 
  */
 class Converter{
-	uint32_t Rn = 0;
-	uint32_t Rm = 0;
-	uint32_t Rd = 0;
+	uint32_t Rn = 0; // first operand
+	uint32_t Rm = 0; // second operand
+	uint32_t Rd = 0; // destination
 	std::string func = "";
-	char functionList[10][4] = {"ADD" , "AND" , "ORR" , "SUB" , "XOR" , "ASR" , "LSR" , "LSL" , "MOV" , "NOT"};
+	char functionList[10][4] = {"ADD" , "AND" , "ORR" , "SUB" , "XOR" , "ASR" , "LSR" , "LSL" , "NOT" , "MOV"};
 
 	void printOut(); // Prints out final hex
 	void addFunction(); // Add the operands
