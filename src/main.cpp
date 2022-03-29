@@ -17,28 +17,32 @@
 #include <sstream>
 #include "../headers/Converter.h"
 
+enum GlobalRegister : uint32_t{
+	
+	r0 = 0x0 , 
+	r1 = 0x0 , 
+	r2 = 0x0 , 
+	r3 = 0x0 , 
+	r4 = 0x0 , 
+	r5 = 0x0 , 
+	r6 = 0x0 , 
+	r7 = 0x0 , 
+	// r8 = 0x0;
+	// r9 = 0x0;
+	// r10 = 0x0;
+	// r11 = 0x0;
+	// r12 = 0x0;
+	// r13 = 0x0;
+	// r14 = 0x0;
+	// r15 = 0x0;
+}
+
 /**
  * @brief The main driver function that takes in a file of assembly code and processes it.
  * 
  * @return int 
  */
 int main(){
-	uint32_t r0 = 0x0;
-	uint32_t r1 = 0x0;
-	uint32_t r2 = 0x0;
-	uint32_t r3 = 0x0;
-	uint32_t r4 = 0x0;
-	uint32_t r5 = 0x0;
-	uint32_t r6 = 0x0;
-	uint32_t r7 = 0x0;
-	// uint32_t r8 = 0x0;
-	// uint32_t r9 = 0x0;
-	// uint32_t r10 = 0x0;
-	// uint32_t r11 = 0x0;
-	// uint32_t r12 = 0x0;
-	// uint32_t r13 = 0x0;
-	// uint32_t r14 = 0x0;
-	// uint32_t r15 = 0x0;
 
 	std::string filename = "";
 	std::cout << "What's the filename? ";
@@ -48,22 +52,22 @@ int main(){
 
 	if (file.is_open()){
 		std::string func;
-		uint32_t hex1, hex2;
+		uint32_t Rn, Rm;
 
 		while (file >> func){
 			Converter functionFinder;
 			if (functionFinder.findInFunctionList(func) > 5){
 				// single input hex
-				file >> std::hex >> hex1;
-				std::cout << "0x" << std::hex << hex1 << " " << func << " : ";
-				Converter converter(func, hex1);
+				file >> std::hex >> Rn;
+				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
+				Converter converter(func, Rn);
 			}
 			else{
 				// double input hex
-				file >> std::hex >> hex1 >> hex2;
-				std::cout << "0x" << std::hex << hex1 << " " << func << " ";
-					std::cout << "0x" << std::hex << hex2 << " : ";
-						Converter converter(func, hex1, hex2); 
+				file >> std::hex >> Rn >> Rm;
+				std::cout << "0x" << std::hex << Rn << " " << func << " ";
+					std::cout << "0x" << std::hex << Rm << " : ";
+						Converter converter(func, Rn, Rm); 
 			}
 		}
  	}
