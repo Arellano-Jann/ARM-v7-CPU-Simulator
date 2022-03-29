@@ -52,19 +52,19 @@ int main(){
 
 	if (file.is_open()){
 		std::string func;
-		uint32_t Rn, Rm;
+		uint32_t Rd, Rn, Rm;
 
 		while (file >> func){
 			Converter functionFinder;
 			if (functionFinder.findInFunctionList(func) > 5){
 				// single input hex
-				file >> std::hex >> Rn;
+				file >> std::hex >> Rd >> Rn;
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 				Converter converter(func, Rn);
 			}
 			else{
 				// double input hex
-				file >> std::hex >> Rn >> Rm;
+				file >> std::hex >> Rd >> Rn >> Rm;
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 					std::cout << "0x" << std::hex << Rm << " : ";
 						Converter converter(func, Rn, Rm); 

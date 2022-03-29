@@ -31,7 +31,7 @@ class Converter{
 
 public:
 	Converter() = default;
-	Converter(std::string func, uint32_t Rn, uint32_t Rm);
-	Converter(std::string func, uint32_t Rn);
+	Converter(std::string func, uint32_t Rd, uint32_t Rn, uint32_t Rm);
+	Converter(std::string func, uint32_t Rd, uint32_t Rn);
 	int findInFunctionList(std::string func);
 };
