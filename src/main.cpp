@@ -70,7 +70,7 @@ int main(){
 				file >> Rd >> Rn;
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 
-				Converter converter(func, Rn);
+				Converter converter(func, registers[Rn]);
 				// Converter registerFinder;
 				// int reg = registerFinder.findRegister(Rd);
 				registers[Rd, converter.getRd()];
@@ -80,7 +80,7 @@ int main(){
 				file >> Rd >> Rn >> Rm;
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 				std::cout << "0x" << std::hex << Rm << " : ";
-				Converter converter(func, Rd, Rn, Rm);
+				Converter converter(func, registers[Rn], registers[Rm]);
 				registers[Rd, converter.getRd()];
 
 			}

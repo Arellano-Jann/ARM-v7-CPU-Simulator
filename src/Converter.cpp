@@ -8,6 +8,7 @@
  * @param Rm 
  */
 Converter::Converter(std::string func, uint32_t Rn, uint32_t Rm)
+// Converter::Converter(std::string func, std::string Rn, std::string Rm)
 	: func(func)
 	, Rn(Rn)
 	, Rm(Rm)
@@ -34,7 +35,8 @@ Converter::Converter(std::string func, uint32_t Rn, uint32_t Rm)
  * @param func 
  * @param Rn 
  */
-Converter::Converter(std::string func,˚s uint32_t Rn)
+Converter::Converter(std::string func, uint32_t Rn)
+// Converter::Converter(std::string func, std::string Rn)
 	: func(func)
 	, Rn(Rn)
 {
