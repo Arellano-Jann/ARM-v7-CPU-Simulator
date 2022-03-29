@@ -60,14 +60,14 @@ int main(){
 				// single input hex
 				file >> std::hex >> Rd >> Rn;
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
-				Converter converter(func, Rn);
+				Converter converter(func, Rd, Rn);
 			}
 			else{
 				// double input hex
 				file >> std::hex >> Rd >> Rn >> Rm;
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 					std::cout << "0x" << std::hex << Rm << " : ";
-						Converter converter(func, Rn, Rm); 
+						Converter converter(func, Rd, Rn, Rm); 
 			}
 		}
  	}
