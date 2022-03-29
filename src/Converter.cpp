@@ -7,8 +7,9 @@
  * @param Rn 
  * @param Rm 
  */
-Converter::Converter(std::string func, uint32_t Rn, uint32_t Rm)
+Converter::Converter(std::string func, uint32_t Rd, uint32_t Rn, uint32_t Rm)
 	: func(func)
+	, Rd(Rd)
 	, Rn(Rn)
 	, Rm(Rm)
 {
@@ -34,8 +35,9 @@ Converter::Converter(std::string func, uint32_t Rn, uint32_t Rm)
  * @param func 
  * @param Rn 
  */
-Converter::Converter(std::string func, uint32_t Rn)
+Converter::Converter(std::string func, uint32_t Rd, uint32_t Rn)
 	: func(func)
+	, Rd(Rd)
 	, Rn(Rn)
 {
 	int funcType = findInFunctionList(func);
