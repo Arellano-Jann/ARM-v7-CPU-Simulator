@@ -15,27 +15,28 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <map>
 #include "../headers/Converter.h"
 
-struct GlobalRegister{
+// struct GlobalRegister{
 	
-	uint32_t r0 = 0x0;
-	uint32_t r1 = 0x0;
-	uint32_t r2 = 0x0;
-	uint32_t r3 = 0x0;
-	uint32_t r4 = 0x0;
-	uint32_t r5 = 0x0;
-	uint32_t r6 = 0x0;
-	uint32_t r7 = 0x0;
-	// uint32_t r8 = 0x0;
-	// uint32_t r9 = 0x0;
-	// uint32_t r10 = 0x0;
-	// uint32_t r11 = 0x0;
-	// uint32_t r12 = 0x0;
-	// uint32_t r13 = 0x0;
-	// uint32_t r14 = 0x0;
-	// uint32_t r15 = 0x0;
-};
+// 	uint32_t r0 = 0x0;
+// 	uint32_t r1 = 0x0;
+// 	uint32_t r2 = 0x0;
+// 	uint32_t r3 = 0x0;
+// 	uint32_t r4 = 0x0;
+// 	uint32_t r5 = 0x0;
+// 	uint32_t r6 = 0x0;
+// 	uint32_t r7 = 0x0;
+// 	// uint32_t r8 = 0x0;
+// 	// uint32_t r9 = 0x0;
+// 	// uint32_t r10 = 0x0;
+// 	// uint32_t r11 = 0x0;
+// 	// uint32_t r12 = 0x0;
+// 	// uint32_t r13 = 0x0;
+// 	// uint32_t r14 = 0x0;
+// 	// uint32_t r15 = 0x0;
+// };
 
 /**
  * @brief The main driver function that takes in a file of assembly code and processes it.
@@ -43,9 +44,15 @@ struct GlobalRegister{
  * @return int 
  */
 int main(){
-	// std::cout << GlobalRegister.r0 << std::endl;
-	// GlobalRegister.r0 = 0x5;
-	// std::cout << GlobalRegister.r0 << std::endl;
+	std::map<std::string, uint32_t> registers;
+	registers.insert(std::pair<std::string, uint32_t>("r1",0x0));
+	registers.insert(std::pair<std::string, uint32_t>("r2",0x0));
+	registers.insert(std::pair<std::string, uint32_t>("r3",0x0));
+	registers.insert(std::pair<std::string, uint32_t>("r4",0x0));
+	registers.insert(std::pair<std::string, uint32_t>("r5",0x0));
+	registers.insert(std::pair<std::string, uint32_t>("r6",0x0));
+	registers.insert(std::pair<std::string, uint32_t>("r7",0x0));
+
 
 	std::string filename = "";
 	std::cout << "What's the filename? ";
@@ -65,7 +72,7 @@ int main(){
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 				Converter converter(func, Rd, Rn);
 				Converter registerFinder;
-				int register = registerFinder.findRegister(Rd);
+				int reg = registerFinder.findRegister(Rd);
 				r1 = converter.getRd();
 			}
 			else{
