@@ -55,6 +55,9 @@ int main(){
 	registers.insert(std::pair<std::string, uint32_t>("r6",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r7",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("#1",0x1));
+	registers.insert(std::pair<std::string, uint32_t>("#2",0x2));
+	registers.insert(std::pair<std::string, uint32_t>("#3",0x3));
+	registers.insert(std::pair<std::string, uint32_t>("#4",0x4));
 
 
 	// std::string filename = "";
@@ -64,7 +67,7 @@ int main(){
 
 	std::ifstream file(filename);
 	// need change to print output values. changed values etc.
-	// need change to do toLower() on all inputs for standardization
+	// FINISHED??? need change to do toLower() on all inputs for standardization
 	// add a check for MOV # in Rn
 	if (file.is_open()){
 		std::string func, Rd, Rn, Rm;
@@ -80,12 +83,13 @@ int main(){
 				Rd.erase(std::remove(Rd.begin(), Rd.end(), ','), Rd.end());
 				Rn.erase(std::remove(Rn.begin(), Rn.end(), ','), Rn.end());
 
-				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
+				// std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 
 				Converter converter(func, registers[Rn]);
 				// Converter registerFinder;
 				// int reg = registerFinder.findRegister(Rd);
 				registers[Rd] = converter.getRd();
+				std::cout << Rd << " = " << std::hex << converter.getRd() << " | This was changed by: " << func << " " << Rd << ", " << Rn << std::endl;
 			}
 			else{
 				// double input
@@ -96,10 +100,11 @@ int main(){
 				Rd.erase(std::remove(Rd.begin(), Rd.end(), ','), Rd.end());
 				Rn.erase(std::remove(Rn.begin(), Rn.end(), ','), Rn.end());
 				Rm.erase(std::remove(Rm.begin(), Rm.end(), ','), Rm.end());
-				std::cout << "0x" << std::hex << Rn << " " << func << " ";
-				std::cout << "0x" << std::hex << Rm << " : ";
+				// std::cout << "0x" << std::hex << Rn << " " << func << " ";
+				// std::cout << "0x" << std::hex << Rm << " : ";
 				Converter converter(func, registers[Rn], registers[Rm]);
 				registers[Rd] = converter.getRd();
+				std::cout << Rd << " = " << std::hex << converter.getRd() << " | This was changed by: " << func << " " << Rd << ", " << Rn << ", " << Rm << std::endl;
 
 			}
 		}
