@@ -63,7 +63,7 @@ Converter::Converter(std::string func, uint32_t Rn)
  * @return int 
  */
 int Converter::findInFunctionList(std::string func){
-	for (int i = 0; i < 9; i++){
+	for (int i = 0; i < 10; i++){
 		if (func==(functionList[i])){
 			return i+1;
 		}

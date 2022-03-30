@@ -16,6 +16,7 @@
 #include <string>
 #include <sstream>
 #include <map>
+#include <algorithm>
 #include <boost/algorithm/string.hpp>
 #include "../headers/Converter.h"
 
@@ -53,26 +54,32 @@ int main(){
 	registers.insert(std::pair<std::string, uint32_t>("r5",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r6",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r7",0x0));
+	registers.insert(std::pair<std::string, uint32_t>("#1",0x1));
 
 
-	std::string filename = "";
-	std::cout << "What's the filename? ";
-	std::cin >> filename;
+	// std::string filename = "";
+	// std::cout << "What's the filename? ";
+	// std::cin >> filename;
+	std::string filename = "file.txt";
 
 	std::ifstream file(filename);
 	// need change to print output values. changed values etc.
 	// need change to do toLower() on all inputs for standardization
+	// add a check for MOV # in Rn
 	if (file.is_open()){
 		std::string func, Rd, Rn, Rm;
 
 		while (file >> func){
 			Converter functionFinder;
-			boost::algorithm::to_lower(func);
+			boost::algorithm::to_upper(func);
 			if (functionFinder.findInFunctionList(func) > 5){
 				// single input
 				file >> Rd >> Rn;
 				boost::algorithm::to_lower(Rd);
 				boost::algorithm::to_lower(Rn);
+				Rd.erase(std::remove(Rd.begin(), Rd.end(), ','), Rd.end());
+				Rn.erase(std::remove(Rn.begin(), Rn.end(), ','), Rn.end());
+
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 
 				Converter converter(func, registers[Rn]);
@@ -86,6 +93,9 @@ int main(){
 				boost::algorithm::to_lower(Rd);
 				boost::algorithm::to_lower(Rn);
 				boost::algorithm::to_lower(Rm);
+				Rd.erase(std::remove(Rd.begin(), Rd.end(), ','), Rd.end());
+				Rn.erase(std::remove(Rn.begin(), Rn.end(), ','), Rn.end());
+				Rm.erase(std::remove(Rm.begin(), Rm.end(), ','), Rm.end());
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 				std::cout << "0x" << std::hex << Rm << " : ";
 				Converter converter(func, registers[Rn], registers[Rm]);
