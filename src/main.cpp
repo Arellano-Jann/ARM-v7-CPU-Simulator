@@ -16,6 +16,7 @@
 #include <string>
 #include <sstream>
 #include <map>
+#include <boost/algorithm/string.hpp>
 #include "../headers/Converter.h"
 
 // struct GlobalRegister{
@@ -59,16 +60,19 @@ int main(){
 	std::cin >> filename;
 
 	std::ifstream file(filename);
-	// need change to output values. changed values etc.
+	// need change to print output values. changed values etc.
 	// need change to do toLower() on all inputs for standardization
 	if (file.is_open()){
 		std::string func, Rd, Rn, Rm;
 
 		while (file >> func){
 			Converter functionFinder;
+			boost::algorithm::to_lower(func);
 			if (functionFinder.findInFunctionList(func) > 5){
 				// single input
 				file >> Rd >> Rn;
+				boost::algorithm::to_lower(Rd);
+				boost::algorithm::to_lower(Rn);
 				std::cout << "0x" << std::hex << Rn << " " << func << " : ";
 
 				Converter converter(func, registers[Rn]);
@@ -79,6 +83,9 @@ int main(){
 			else{
 				// double input
 				file >> Rd >> Rn >> Rm;
+				boost::algorithm::to_lower(Rd);
+				boost::algorithm::to_lower(Rn);
+				boost::algorithm::to_lower(Rm);
 				std::cout << "0x" << std::hex << Rn << " " << func << " ";
 				std::cout << "0x" << std::hex << Rm << " : ";
 				Converter converter(func, registers[Rn], registers[Rm]);
