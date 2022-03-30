@@ -59,7 +59,8 @@ int main(){
 	std::cin >> filename;
 
 	std::ifstream file(filename);
-	// need change to pass in registers instead
+	// need change to output values. changed values etc.
+	// need change to do toLower() on all inputs for standardization
 	if (file.is_open()){
 		std::string func, Rd, Rn, Rm;
 
