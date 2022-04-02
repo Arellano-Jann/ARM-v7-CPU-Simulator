@@ -97,7 +97,7 @@ int main(){
 				}
 				Converter converter(func, registers[Rn]);
 				registers[Rd] = converter.getRd();
-				std::cout << "          " << Rd << " = " << std::hex << registers[Rd] << std::endl;
+				std::cout << "          " << Rd << " = 0x" << std::hex << registers[Rd] << std::endl;
 			}
 			else{
 				// double input
@@ -116,7 +116,7 @@ int main(){
 
 				Converter converter(func, registers[Rn], registers[Rm]);
 				registers[Rd] = converter.getRd();
-				std::cout << "          " << Rd << " = " << std::hex << registers[Rd] << std::endl;
+				std::cout << "          " << Rd << " = 0x" << std::hex << registers[Rd] << std::endl;
 
 			}
 		}
