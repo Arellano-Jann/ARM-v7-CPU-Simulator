@@ -19,6 +19,7 @@
 #include <algorithm>
 #include <boost/algorithm/string.hpp>
 #include "../headers/Converter.h"
+// #include <bits/stdc++.h>
 
 // struct GlobalRegister{
 	
@@ -47,6 +48,7 @@
  */
 int main(){
 	std::map<std::string, uint32_t> registers;
+	registers.insert(std::pair<std::string, uint32_t>("r0",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r1",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r2",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r3",0x0));
@@ -54,10 +56,8 @@ int main(){
 	registers.insert(std::pair<std::string, uint32_t>("r5",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r6",0x0));
 	registers.insert(std::pair<std::string, uint32_t>("r7",0x0));
-	registers.insert(std::pair<std::string, uint32_t>("#1",0x1));
-	registers.insert(std::pair<std::string, uint32_t>("#2",0x2));
-	registers.insert(std::pair<std::string, uint32_t>("#3",0x3));
-	registers.insert(std::pair<std::string, uint32_t>("#4",0x4));
+	registers.insert(std::pair<std::string, uint32_t>("#",0x0));
+
 
 
 	// std::string filename = "";
@@ -75,21 +75,29 @@ int main(){
 		while (file >> func){
 			Converter functionFinder;
 			boost::algorithm::to_upper(func);
-			if (functionFinder.findInFunctionList(func) > 5){
+			int funcType = functionFinder.findInFunctionList(func);
+			if (funcType > 5){
 				// single input
 				file >> Rd >> Rn;
 				boost::algorithm::to_lower(Rd);
 				boost::algorithm::to_lower(Rn);
+
+				
+
 				Rd.erase(std::remove(Rd.begin(), Rd.end(), ','), Rd.end());
 				Rn.erase(std::remove(Rn.begin(), Rn.end(), ','), Rn.end());
 
-				// std::cout << "0x" << std::hex << Rn << " " << func << " : ";
+				std::cout << "Function: " << func << " " << Rd << ", " << Rn << std::endl;
 
+				Rn.erase(std::remove(Rn.begin(), Rn.end(), '#'), Rn.end());
+				if (funcType == 10){
+					uint32_t uintRn = std::stoul(Rn, nullptr, 16);
+					registers["#"] = uintRn;
+					Rn = "#";
+				}
 				Converter converter(func, registers[Rn]);
-				// Converter registerFinder;
-				// int reg = registerFinder.findRegister(Rd);
 				registers[Rd] = converter.getRd();
-				std::cout << Rd << " = " << std::hex << converter.getRd() << " | This was changed by: " << func << " " << Rd << ", " << Rn << std::endl;
+				std::cout << "          " << Rd << " = " << std::hex << registers[Rd] << std::endl;
 			}
 			else{
 				// double input
@@ -97,14 +105,18 @@ int main(){
 				boost::algorithm::to_lower(Rd);
 				boost::algorithm::to_lower(Rn);
 				boost::algorithm::to_lower(Rm);
+
+				
+
 				Rd.erase(std::remove(Rd.begin(), Rd.end(), ','), Rd.end());
 				Rn.erase(std::remove(Rn.begin(), Rn.end(), ','), Rn.end());
 				Rm.erase(std::remove(Rm.begin(), Rm.end(), ','), Rm.end());
-				// std::cout << "0x" << std::hex << Rn << " " << func << " ";
-				// std::cout << "0x" << std::hex << Rm << " : ";
+				
+				std::cout << "Function: " << func << " " << Rd << ", " << Rn << ", " << Rm << std::endl;
+
 				Converter converter(func, registers[Rn], registers[Rm]);
 				registers[Rd] = converter.getRd();
-				std::cout << Rd << " = " << std::hex << converter.getRd() << " | This was changed by: " << func << " " << Rd << ", " << Rn << ", " << Rm << std::endl;
+				std::cout << "          " << Rd << " = " << std::hex << registers[Rd] << std::endl;
 
 			}
 		}
