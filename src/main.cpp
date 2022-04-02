@@ -17,7 +17,7 @@
 #include <sstream>
 #include <map>
 #include <algorithm>
-#include <boost/algorithm/string.hpp>
+// #include <boost/algorithm/string.hpp>
 #include "../headers/Converter.h"
 // #include <bits/stdc++.h>
 
@@ -74,15 +74,16 @@ int main(){
 
 		while (file >> func){
 			Converter functionFinder;
-			boost::algorithm::to_upper(func);
+			// boost::algorithm::to_upper(func);
+			std::transform(func.begin(), func.end(),func.begin(), ::toupper);
 			int funcType = functionFinder.findInFunctionList(func);
 			if (funcType > 5){
 				// single input
 				file >> Rd >> Rn;
-				boost::algorithm::to_lower(Rd);
-				boost::algorithm::to_lower(Rn);
-
-				
+				// boost::algorithm::to_lower(Rd);
+				// boost::algorithm::to_lower(Rn);
+				std::transform(Rd.begin(), Rd.end(),Rd.begin(), ::tolower);
+				std::transform(Rn.begin(), Rn.end(),Rn.begin(), ::tolower);
 
 				Rd.erase(std::remove(Rd.begin(), Rd.end(), ','), Rd.end());
 				Rn.erase(std::remove(Rn.begin(), Rn.end(), ','), Rn.end());
@@ -102,9 +103,13 @@ int main(){
 			else{
 				// double input
 				file >> Rd >> Rn >> Rm;
-				boost::algorithm::to_lower(Rd);
-				boost::algorithm::to_lower(Rn);
-				boost::algorithm::to_lower(Rm);
+				// boost::algorithm::to_lower(Rd);
+				// boost::algorithm::to_lower(Rn);
+				// boost::algorithm::to_lower(Rm);
+				std::transform(Rd.begin(), Rd.end(),Rd.begin(), ::tolower);
+				std::transform(Rn.begin(), Rn.end(),Rn.begin(), ::tolower);
+				std::transform(Rm.begin(), Rm.end(),Rm.begin(), ::tolower);
+				
 
 				
 
